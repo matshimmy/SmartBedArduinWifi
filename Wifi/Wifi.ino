@@ -15,8 +15,6 @@ void setup() {
 
 void loop() {
   char i;
-  ssidCount = 0;
-  sspassCount = 0;
 
   if (bt.available() > 0) {
     i = bt.read();
@@ -47,9 +45,15 @@ void loop() {
       }
       wifi.setPassword(char_sspass);
     }
+  }
+
+  if(ssidCount > 0 && sspassCount > 0 && !wifi.status()) {
     Serial.print("SSID: ");
     Serial.println(wifi.getSSID());
     Serial.print("Password: ");
     Serial.println(wifi.getPassword());
+    Serial.print("Connected: ");
+    wifi.connect(ssidCount, sspassCount);
+    Serial.println(wifi.status());
   }
 }

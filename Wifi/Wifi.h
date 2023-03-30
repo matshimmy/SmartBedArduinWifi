@@ -13,6 +13,7 @@ class Wifi{
     void setPassword(char* password);
     char* getSSID();
     char* getPassword();
-    bool connect();
+    void connect(int ssidLength, int passLength);
+    bool Wifi::status();
 };
 #endif
